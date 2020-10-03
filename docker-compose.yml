@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: library/postgres:13.0
+    ports:
+      - "5432:5432"
+    environment:
+      - PGDATA='/var/lib/postgresql/data'
+      - POSTGRES_PASSWORD='postgres'
+    volumes:
+      - ./docker-mount/data:/var/lib/postgresql/data
