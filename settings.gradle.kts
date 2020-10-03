@@ -4,3 +4,4 @@ include(
         ":service"
         , ":ktor"
 )
+include("integration-test")

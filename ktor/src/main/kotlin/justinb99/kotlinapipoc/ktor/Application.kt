@@ -9,6 +9,8 @@ import io.ktor.locations.*
 import io.ktor.features.*
 import com.fasterxml.jackson.databind.*
 import io.ktor.jackson.*
+import justinb99.kotlinapipoc.service.WidgetService
+import justinb99.kotlinapipoc.service.db.exposed.initDb
 import org.slf4j.event.Level
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
@@ -40,6 +42,11 @@ fun Application.module(testing: Boolean = false) {
         }
     }
 
+    // TODO: get this info from config/env
+    initDb("localhost", "5432", "postgres", "postgres", "postgres")
+
+    val widgetService = WidgetService()
+
     routing {
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
@@ -59,6 +66,8 @@ fun Application.module(testing: Boolean = false) {
         get("/json/jackson") {
             call.respond(mapOf("hello" to "world"))
         }
+
+        widgetRoutes(widgetService)
     }
 }
 

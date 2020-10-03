@@ -17,6 +17,7 @@ allprojects {
     repositories {
         mavenLocal()
         mavenCentral()
+        jcenter()
     }
 }
 
@@ -33,6 +34,8 @@ subprojects {
     dependencies {
         constraints {
             implementation("ch.qos.logback:logback-classic:1.2.1")
+            implementation("com.fasterxml.jackson.core:jackson-databind:2.10.2")
+            runtimeOnly("org.postgresql:postgresql:42.2.16.jre7")
         }
 
         kotlin("stdlib")
