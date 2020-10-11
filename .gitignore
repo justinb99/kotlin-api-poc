@@ -32,3 +32,5 @@ build
 
 # Ignore Docker volume mounts
 docker-mount
+
+.DS_Store
